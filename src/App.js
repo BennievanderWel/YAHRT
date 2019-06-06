@@ -1,22 +1,21 @@
-import React from "react";
+import React, { useState } from 'react';
+import { BrowserRouter as Router, Route } from 'react-router-dom';
+
+import Login from 'pages/login/Login';
+import { Routes } from 'constants.js';
 
 function App() {
+  const [authenticated, setAuthenticated] = useState(false);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Router>
+      {authenticated ? (
+        Object.values(Routes).map(route => <Route exact path={route} />)
+      ) : (
+        <Login />
+      )}
+      <Route />
+    </Router>
   );
 }
 
