@@ -1,9 +1,7 @@
-import React, { useContext, useState } from 'react';
-import { AppContext } from 'App.context';
+import React, { useState } from 'react';
 import { auth } from 'firebase/Firebase';
 
 export default () => {
-  const { setAuthenticated } = useContext(AppContext);
   const [email, setEmail] = useState('bennievanderwel@gmail.com');
   const [password, setPassword] = useState('passpass');
   const [loading, setLoading] = useState(false);
