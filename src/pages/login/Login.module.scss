@@ -1,0 +1,16 @@
+@import 'styles/styles.scss';
+
+.Container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 20%;
+  height: 100%;
+
+  h3 {
+    color: $color-black;
+    text-decoration: underline;
+    text-decoration-color: $color-main;
+    margin-bottom: 40px;
+  }
+}

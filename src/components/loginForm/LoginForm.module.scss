@@ -1,0 +1,22 @@
+.Container {
+  width: 400px;
+  height: 220px;
+}
+
+.Form {
+  display: flex;
+  flex-direction: column;
+
+  button {
+    margin-top: 20px;
+    align-self: center;
+  }
+}
+
+.LoginBtn {
+  width: 200px;
+}
+
+.Loader {
+  margin-top: -21px;
+}

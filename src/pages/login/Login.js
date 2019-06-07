@@ -1,47 +1,12 @@
-import React, { useState } from 'react';
-import { auth } from 'firebase/Firebase';
+import React from 'react';
+import styles from './Login.module.scss';
+import LoginForm from 'components/loginForm/LoginForm';
 
 export default () => {
-  const [email, setEmail] = useState('bennievanderwel@gmail.com');
-  const [password, setPassword] = useState('passpass');
-  const [loading, setLoading] = useState(false);
-
-  function handleSubmit(e) {
-    e.preventDefault();
-    setLoading(true);
-    auth
-      .signInWithEmailAndPassword(email, password)
-      .then(() => {
-        setLoading(false);
-      })
-      .catch(err => console.log(err));
-  }
-
-  function handleEmailInput(e) {
-    setEmail(e.target.value);
-  }
-
-  function handlePasswordInput(e) {
-    setPassword(e.target.value);
-  }
-
   return (
-    <div>
-      {loading ? 'Loading..' : ''}
-      <form onSubmit={handleSubmit}>
-        <label>
-          Email: <input onChange={handleEmailInput} value={email} />
-        </label>
-        <label>
-          Password:{' '}
-          <input
-            type='password'
-            onChange={handlePasswordInput}
-            value={password}
-          />
-        </label>
-        <button type='submit'>Inloggen</button>
-      </form>
+    <div className={styles.Container}>
+      <h3>YAHRT</h3>
+      <LoginForm />
     </div>
   );
 };

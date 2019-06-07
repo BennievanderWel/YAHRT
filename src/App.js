@@ -6,6 +6,7 @@ import Login from 'pages/login/Login';
 import Dashboard from 'pages/dashboard/Dashboard';
 import Profile from 'pages/profile/Profile';
 import { auth } from 'firebase/Firebase';
+import styles from './App.module.scss';
 
 class App extends React.Component {
   state = {
@@ -34,27 +35,30 @@ class App extends React.Component {
   render() {
     const { authenticated, user, loading } = this.state;
 
-    return loading ? (
-      'Loading...'
-    ) : (
-      <AppContext.Provider
-        value={{
-          setAuthenticated: authenticated => this.setState({ authenticated }),
-          user
-        }}
-      >
-        <Router>
-          {authenticated ? (
-            <>
-              <Route exact path={Routes.DASHBOARD} component={Dashboard} />
-              <Route exact path={Routes.Profile} component={Profile} />
-            </>
-          ) : (
-            <Login />
-          )}
-          <Route />
-        </Router>
-      </AppContext.Provider>
+    return (
+      <div className={styles.Container}>
+        {!loading && (
+          <AppContext.Provider
+            value={{
+              setAuthenticated: authenticated =>
+                this.setState({ authenticated }),
+              user
+            }}
+          >
+            <Router>
+              {authenticated ? (
+                <>
+                  <Route exact path={Routes.DASHBOARD} component={Dashboard} />
+                  <Route exact path={Routes.Profile} component={Profile} />
+                </>
+              ) : (
+                <Login />
+              )}
+              <Route />
+            </Router>
+          </AppContext.Provider>
+        )}
+      </div>
     );
   }
 }
